@@ -1,6 +1,13 @@
 import React from "react";
 import { Row, Col } from "react-bootstrap";
-import { Paper, Title } from "./FeedbackItemStyles";
+import {
+  Paper,
+  SubTitle,
+  Textarea,
+  Title,
+  Stars,
+  Header
+} from "./FeedbackItemStyles";
 import { Rating } from "react-simple-star-rating";
 
 /**
@@ -21,18 +28,22 @@ export default function FeedbackItem({
     <Paper>
       <Row>
         <Col>
-          <Title>{title}</Title>
-          <p>{subtitle}</p>
+          <Header>
+            <Title>{title}</Title>
+            <SubTitle>{subtitle}</SubTitle>
+          </Header>
         </Col>
         <Col>
-          <Rating
-            onClick={(r) => setFeedback({ ...feedback, rating: r })}
-            ratingValue={feedback.rating || 0}
-          />
+          <Stars>
+            <Rating
+              onClick={(r) => setFeedback({ ...feedback, rating: r })}
+              ratingValue={feedback.rating || 0}
+            />
+          </Stars>
         </Col>
       </Row>
       <Row>
-        <textarea
+        <Textarea
           onChange={(c) =>
             setFeedback({ ...feedback, comment: c.target.value })
           }
